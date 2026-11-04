@@ -1,4 +1,4 @@
-import { vi } from 'vitest'
+import { vi, type Mock } from 'vitest'
 
 export class ImageVisibilityObserver implements IntersectionObserver {
   static current: ImageVisibilityObserver
@@ -6,9 +6,9 @@ export class ImageVisibilityObserver implements IntersectionObserver {
   readonly rootMargin = '128px'
   readonly scrollMargin = '0px'
   readonly thresholds = [0]
-  readonly observe = vi.fn()
-  readonly unobserve = vi.fn()
-  readonly disconnect = vi.fn()
+  readonly observe: Mock = vi.fn()
+  readonly unobserve: Mock = vi.fn()
+  readonly disconnect: Mock = vi.fn()
   readonly takeRecords = (): IntersectionObserverEntry[] => []
 
   constructor(private readonly callback: IntersectionObserverCallback) {
